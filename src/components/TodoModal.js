@@ -33,7 +33,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
-  const [level,setLevel] = useState('low')
+  const [level, setLevel] = useState('low')
 
   useEffect(() => {
     if (type === 'update' && todo) {
@@ -68,7 +68,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       }
       if (type === 'update') {
         if (todo.title !== title || todo.status !== status || todo.level !== level) {
-          dispatch(updateTodo({ ...todo, title, status,level }));
+          dispatch(updateTodo({ ...todo, title, status, level }));
           toast.success('Task Updated successfully');
         } else {
           toast.error('No changes made');
@@ -115,6 +115,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
               </h1>
               <label htmlFor="title">
                 Title
+                <br />
                 <input
                   type="text"
                   id="title"
@@ -122,8 +123,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </label>
+              <br />
               <label htmlFor="type">
                 Status
+                <br />
                 <select
                   id="type"
                   value={status}
@@ -133,8 +136,10 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
                   <option value="complete">Completed</option>
                 </select>
               </label>
+              <br />
               <label htmlFor="level">
                 Level
+                <br />
                 <select
                   id="level"
                   value={level}
@@ -148,7 +153,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
 
               <div className={styles.buttonContainer}>
                 <Button type="submit" variant="primary">
-                  {type === 'add' ? 'Add Task' : 'Update Task'}
+                  {type === 'add' ? 'Add Todo' : 'Update Task'}
                 </Button>
                 <Button variant="secondary" onClick={() => setModalOpen(false)}>
                   Cancel

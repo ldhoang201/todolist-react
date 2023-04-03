@@ -5,20 +5,24 @@
 	width: 100%;
 	margin: 0 auto;
 }
+
 .appHeader {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	height: 60px;
 }
+
 .content__wrapper {
 	background-color: var(--bg-2);
 	padding: 2rem;
 	border-radius: 12px;
+
 	@include smallDeviceSize {
 		padding: 1.5rem;
 	}
 }
+
 .emptyText {
 	// display: inline-block;
 	font-size: 1.6rem;
@@ -36,15 +40,18 @@
 
 .searchContainer {
 	position: relative;
-	width: 120px; /* set initial width */
-	transition: width 0.3s ease-in-out; /* add transition effect */
-  }
-  
-  .searchContainer:hover {
-	width: 300px; /* expand on hover */
-  }
-  
-  .searchContainer input[type="text"] {
+	width: 120px;
+	/* set initial width */
+	transition: width 0.3s ease-in-out;
+	/* add transition effect */
+}
+
+.searchContainer:hover {
+	width: 300px;
+	/* expand on hover */
+}
+
+.searchContainer input[type="text"] {
 	padding: 10px 20px;
 	border: none;
 	border-radius: 20px;
@@ -53,14 +60,14 @@
 	box-sizing: border-box;
 	background-color: whitesmoke;
 	border: 1px solid gray;
-  }
-  
-  .searchContainer input[type="text"]:focus {
+}
+
+.searchContainer input[type="text"]:focus {
 	outline: none;
 	box-shadow: 0 0 5px white;
-  }
-  
-  .searchIcon {
+}
+
+.searchIcon {
 	position: absolute;
 	top: 50%;
 	right: 20px;
@@ -68,5 +75,4 @@
 	font-size: 18px;
 	color: white;
 	cursor: pointer;
-  }
-  
+}

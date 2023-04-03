@@ -25,15 +25,8 @@ function AppHeader() {
   };
 
   return (
-    <div className={styles.appHeader}>
-      <Button variant="primary" onClick={() => setModalOpen(true)}>
-        Add Task
-      </Button>
-      <div class={styles.searchContainer}>
-      <input type="text" placeholder="Search..." onChange={(e) => updateSearch(e)}/>
-          <i class={styles.searchIcon}></i>
-      </div>
 
+    <div className={styles.appHeader}>
       <SelectButton
         id="status"
         onChange={(e) => updateFilter(e)}
@@ -43,6 +36,13 @@ function AppHeader() {
         <option value="incomplete">Incomplete</option>
         <option value="complete">Completed</option>
       </SelectButton>
+      <div class={styles.searchContainer}>
+        <input type="text" placeholder="Search..." onChange={(e) => updateSearch(e)} />
+        <i class={styles.searchIcon}></i>
+      </div>
+      <Button variant="primary" onClick={() => setModalOpen(true)}>
+        Add Todo
+      </Button>
       <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </div>
   );
