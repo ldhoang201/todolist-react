@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <div className="container">
-        <PageTitle>TODO List App</PageTitle>
         <div className={styles.app__wrapper}>
           <AppHeader />
           <AppContent />

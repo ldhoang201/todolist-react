@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import { addTodo, updateTodo } from '../slices/todoSlice';
 import styles from '../styles/modules/modal.module.scss';
 import Button from './Button';
+import { useRef } from 'react';
 
 const dropIn = {
   hidden: {
@@ -33,7 +34,8 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [status, setStatus] = useState('incomplete');
-  const [level, setLevel] = useState('low')
+  const [level, setLevel] = useState('low');
+  const refOne = useRef(null);
 
   useEffect(() => {
     if (type === 'update' && todo) {
@@ -46,6 +48,16 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
       setLevel('low');
     }
   }, [type, todo, modalOpen]);
+
+  useEffect(() => {
+    document.addEventListener('click',handleClickOutSide,true);
+  },[])
+
+  const handleClickOutSide = (e) => {
+    if(refOne.current && !refOne.current.contains(e.target)){
+      setModalOpen(false)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -94,6 +106,7 @@ function TodoModal({ type, modalOpen, setModalOpen, todo }) {
             initial="hidden"
             animate="visible"
             exit="exit"
+            ref={refOne}
           >
             <motion.div
               className={styles.closeButton}
