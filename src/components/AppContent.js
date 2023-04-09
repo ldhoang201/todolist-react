@@ -41,6 +41,9 @@ function AppContent() {
     return item.title.includes(searchValue)
   });
 
+  console.log(searchedTodoList)
+  console.log(filteredTodoList)
+
   return (
     <motion.div
       className={styles.content__wrapper}
@@ -48,11 +51,8 @@ function AppContent() {
       initial="hidden"
       animate="visible"
     >
-      {
-        console.log(searchedTodoList)
-      }
       <AnimatePresence>
-        {filteredTodoList && filteredTodoList.length > 0 ? (
+        {filteredTodoList && filteredTodoList.length > 0 && searchedTodoList.length > 0 ? (
           searchValue !== '' ? 
           (
             searchedTodoList.map((todo) => (
@@ -66,7 +66,8 @@ function AppContent() {
             <TodoItem key={todo.id} todo={todo} />
             // </motion.div>
           ))
-        )) : (
+        )) : 
+        (
           <motion.p variants={child} className={styles.emptyText}>
             No Todos
           </motion.p>
