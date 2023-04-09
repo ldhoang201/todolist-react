@@ -5,6 +5,7 @@ import styles from '../styles/modules/app.module.scss';
 import TodoModal from './TodoModal';
 import { updateFilterStatus } from '../slices/todoSlice';
 import { updateSearchValue } from '../slices/todoSlice';
+import {setEmptyTodo} from '../slices/todoSlice'
 
 function AppHeader() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -23,6 +24,10 @@ function AppHeader() {
     setSearchValue(e.target.value);
     dispatch(updateSearchValue(e.target.value));
   };
+
+  const doEmptyTodo = () => {
+    dispatch(setEmptyTodo())
+  }
 
   return (
     <div>
@@ -48,6 +53,13 @@ function AppHeader() {
         <option value="incomplete">Incomplete</option>
         <option value="complete">Completed</option>
       </SelectButton>
+      <button 
+      type="button" 
+      class="btn btn-danger"
+       style={{width:'8%',height:'50%',borderRadius:'6px'}}
+       onClick={() => doEmptyTodo()}
+      >
+        Clear</button>
       <TodoModal type="add" modalOpen={modalOpen} setModalOpen={setModalOpen} />
     </div>
       </div>

@@ -76,10 +76,14 @@ export const todoSlice = createSlice({
     },
     updateSearchValue:(state, action) => {
       state.searchValue = action.payload;
+    },
+    setEmptyTodo : (state) => {
+      state.todoList = []
+      localStorage.clear()
     }
   },
 });
 
-export const { addTodo, updateTodo, deleteTodo, updateFilterStatus,updateSearchValue } =
+export const { addTodo, updateTodo, deleteTodo, updateFilterStatus,updateSearchValue,setEmptyTodo } =
   todoSlice.actions;
 export default todoSlice.reducer;
